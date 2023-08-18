@@ -13,3 +13,4 @@ Else {
 	}
 
 $Nix=Stop-Transcript
+Write-Host $Nix

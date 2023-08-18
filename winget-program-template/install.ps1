@@ -9,10 +9,12 @@ $Nix=Start-Transcript -Path "$ProgramFiles\_MEM\Log\$ProgramName-install.log" -F
 $WingetPath =  (Resolve-Path "$ProgramFiles\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe")[-1].path
 
 If ($WingetPath){
-	Start-Process -wait -NoNewWindow -FilePath "$($WingetPath)\winget.exe" -ArgumentList "install --exact --id $ProgramName --silent --accept-package-agreements --accept-source-agreements --scope=machine"
+	$ProcessResult =(&"$($WingetPath)\winget.exe" install --exact --id $ProgramName --silent --accept-package-agreements --accept-source-agreements --scope=machine)	
+	Write-Host $ProcessResult	
 	}
 Else {
 	Write-Error "Winget not installed"
 	}
 
 $Nix=Stop-Transcript
+Write-Host $Nix
