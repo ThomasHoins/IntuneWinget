@@ -3,7 +3,7 @@
 	)
 
 $ProgramFiles = "$Env:Programfiles"
-Start-Transcript -Path "$ProgramFiles\_MEM\Log\$ProgramName-install.log" -Force -Append
+$Nix=Start-Transcript -Path "$ProgramFiles\_MEM\Log\$ProgramName-install.log" -Force -Append
 
 # resolve winget_exe
 $WingetPath =  (Resolve-Path "$ProgramFiles\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe")[-1].path
@@ -15,4 +15,4 @@ Else {
 	Write-Error "Winget not installed"
 	}
 
-Stop-Transcript
+$Nix=Stop-Transcript
